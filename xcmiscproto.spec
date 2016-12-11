@@ -4,12 +4,12 @@
 #
 Name     : xcmiscproto
 Version  : 1.2.2
-Release  : 6
+Release  : 7
 URL      : http://xorg.freedesktop.org/releases/individual/proto/xcmiscproto-1.2.2.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/xcmiscproto-1.2.2.tar.gz
 Summary  : XCMisc extension headers
 Group    : Development/Tools
-License  : MIT
+License  : MIT-Opengroup
 Requires: xcmiscproto-doc
 BuildRequires : libxslt-bin
 BuildRequires : pkgconfig(xorg-macros)
@@ -23,6 +23,7 @@ the server for available resource IDs.
 %package dev
 Summary: dev components for the xcmiscproto package.
 Group: Development
+Provides: xcmiscproto-devel
 
 %description dev
 dev components for the xcmiscproto package.
@@ -40,10 +41,15 @@ doc components for the xcmiscproto package.
 %setup -q -n xcmiscproto-1.2.2
 
 %build
+export LANG=C
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
@@ -57,7 +63,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 /usr/include/X11/extensions/xcmiscproto.h
 /usr/include/X11/extensions/xcmiscstr.h
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/pkgconfig/xcmiscproto.pc
 
 %files doc
 %defattr(-,root,root,-)
