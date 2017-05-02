@@ -4,7 +4,7 @@
 #
 Name     : xcmiscproto
 Version  : 1.2.2
-Release  : 8
+Release  : 9
 URL      : http://xorg.freedesktop.org/releases/individual/proto/xcmiscproto-1.2.2.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/xcmiscproto-1.2.2.tar.gz
 Summary  : XCMisc extension headers
